@@ -4,3 +4,6 @@
 *.ipynb_checkpoints
 *.ipynb
 *.zip
+*.pdf
+report
+references
