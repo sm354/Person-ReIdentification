@@ -1,8 +1,10 @@
-timm==0.3.2
+timm
 faiss
-tqdm==4.54.0
-numpy==1.19.5
-torch==1.8.1
-torchvision==0.8.2
+tqdm
+numpy
+torch
+torchvision
 matplotlib
 gdown
+jupyter notebook
+sklearn

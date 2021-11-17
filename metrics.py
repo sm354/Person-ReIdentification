@@ -8,7 +8,12 @@ def rank5(label, output):
         return True
     return False
 
-def calc_ap(label, output):
+def rank10(label, output):
+    if label in output[1][0][:10]:
+        return True
+    return False
+
+def calc_map(label, output):
     count = 0
     score = 0
     good = 0
