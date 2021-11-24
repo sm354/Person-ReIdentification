@@ -8,3 +8,4 @@ matplotlib
 gdown
 jupyter notebook
 sklearn
+pandas
