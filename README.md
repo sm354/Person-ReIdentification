@@ -30,4 +30,50 @@ This repository provides the starter code and the dataset (train and val) for th
 	* The quantitative evaluation script has been given to calculate CMC@rank-1, CMC@rank-5, and mAP scores. 
 	* You need to write code for any visualization.
 
+## Results
 
+|  Model   | CMC@Rank-1 | CMC@Rank-5 | CMC@Rank-10 | mAP  |
+| :------: | :--------: | :--------: | :---------: | ---- |
+| Baseline |    0.96    |     1      |      1      | 0.95 |
+|   Ours   |            |            |             |      |
+
+## Installation
+
+```bash
+git clone https://github.com/sm354/Pedestrian-Detection.git
+cd Pedestrian-Detection
+pip install -r requirements.txt
+```
+
+##### Download Baseline model weights
+
+```
+gdown 1zfU44JxyHCUSWJ7ngiKyqJocgdF82pVt
+```
+
+##### Download Ours model weights
+
+```bash
+gdown 1zfU44JxyHCUSWJ7ngiKyqJocgdF82pVt
+```
+
+## Running Models
+
+**Training**
+
+```bash
+python run-train.py
+```
+
+**Testing**
+
+```bash
+python run-test.py
+```
+
+## Authors
+
+- [Shubham Mittal](https://www.linkedin.com/in/shubham-mittal-6a8644165/)
+- [Aditi Khandelwal](https://www.linkedin.com/in/aditi-khandelwal-991b1b19b/)
+
+Computer Vision course project ([course webpage](https://www.cse.iitd.ac.in/~chetan/teaching/col780-2020.html)) taken by [Prof. Chetan Arora](https://www.cse.iitd.ac.in/~chetan)
