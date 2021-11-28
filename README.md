@@ -32,10 +32,10 @@ This repository provides the starter code and the dataset (train and val) for th
 
 ## Results
 
-|  Model   | CMC@Rank-1 | CMC@Rank-5 | CMC@Rank-10 | mAP  |
-| :------: | :--------: | :--------: | :---------: | ---- |
-| Baseline |    0.96    |     1      |      1      | 0.95 |
-|   Ours   |            |            |             |      |
+|  Model   | CMC@Rank-1 | CMC@Rank-5 | mAP  | Download |
+| :------: | :--------: | :--------: | :--: | :------: |
+| Baseline |    0.92    |    0.96    | 0.91 |  model   |
+|   Ours   |    0.93    |   0.964    | 0.95 |  Model   |
 
 ## Installation
 
@@ -45,13 +45,7 @@ cd Pedestrian-Detection
 pip install -r requirements.txt
 ```
 
-##### Download Baseline model weights
-
-```
-gdown 1zfU44JxyHCUSWJ7ngiKyqJocgdF82pVt
-```
-
-##### Download Ours model weights
+##### Download model weights
 
 ```bash
 gdown 1zfU44JxyHCUSWJ7ngiKyqJocgdF82pVt
