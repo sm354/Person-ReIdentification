@@ -1,34 +1,4 @@
-# COL780 Re-ID project
-This repository provides the starter code and the dataset (train and val) for the project.
-
-### Dataset
-* The dataset has 114 unique persons. The train and val set contain 62 and 12 persons, respectively.
-* We have held out the test set of 40 persons.
-* Each person has been captured using 2 cameras from 8 different angles. That is, each person would have 16 images. All images of a unique person is stored in a single directory (numbered from 001 to 114).
-* The dataset has the following directory structure:
-
-        |__ train
-        |        |__ 001
-        |        |__ 002
-        |            ...
-        |__ val
-        |        |__ query
-        |        |        |__ 004
-        |        |        |__ 012
-        |        |            ...
-        |        |__ gallery  
-        |        |         
-        |        |__ all_imgs
-
-* The images of a person in the val set in split into query and gallery images. The query is the set of images which will be used to retrieve the images of the same person from the gallery. 
-* Note that query and gallery are mutually exclusive sets.
-
-### TODO
-1. You need to write the code for a Person Re-ID model and train it. 
-2. Write the training script and save the model after training.
-3. Evaluate and analyze the results. 
-	* The quantitative evaluation script has been given to calculate CMC@rank-1, CMC@rank-5, and mAP scores. 
-	* You need to write code for any visualization.
+# Person Re-Identification
 
 ## Results
 
@@ -45,7 +15,16 @@ cd Pedestrian-Detection
 pip install -r requirements.txt
 ```
 
-##### Download model weights
+`PennFudanPed_train.json`, and `PennFudanPed_val.json` contains COCO annotations for a randomly generated train-val split of the PennFudan dataset. 
+
+##### Download Penn-Fudan Dataset
+
+```
+wget https://www.cis.upenn.edu/~jshi/ped_html/PennFudanPed.zip
+unzip PennFudanPed.zip 
+```
+
+##### Download SVM model weights
 
 ```bash
 gdown 1zfU44JxyHCUSWJ7ngiKyqJocgdF82pVt
@@ -53,21 +32,49 @@ gdown 1zfU44JxyHCUSWJ7ngiKyqJocgdF82pVt
 
 ## Running Models
 
-**Training**
+**Training** 
 
 ```bash
-python run-train.py
+python run-train.py --train_data_dir ./data/train --model_name la-tf++ --model_dir ./model --num_epochs 25
 ```
 
 **Testing**
 
 ```bash
-python run-test.py
+python run-test.py --model_path ./model/la-tf++.pth --test_data ./test
 ```
+
+The script `run-test.py` takes in the query and gallery images and computes the following metrics:
+
+1. CMC@Rank-1
+2. CMC@Rank-5
+3. mean Average Precision (mAP)
 
 ## Authors
 
 - [Shubham Mittal](https://www.linkedin.com/in/shubham-mittal-6a8644165/)
 - [Aditi Khandelwal](https://www.linkedin.com/in/aditi-khandelwal-991b1b19b/)
 
-Computer Vision course project ([course webpage](https://www.cse.iitd.ac.in/~chetan/teaching/col780-2020.html)) taken by [Prof. Chetan Arora](https://www.cse.iitd.ac.in/~chetan)
+Course assignment in Computer Vision course ([course webpage](https://www.cse.iitd.ac.in/~chetan/teaching/col780-2020.html)) taken by [Prof. Chetan Arora](https://www.cse.iitd.ac.in/~chetan)
+
+
+
+
+This repository provides the starter code and the dataset (train and val) for the project.
+
+### Dataset
+* The dataset has 114 unique persons. The train and val set contain 62 and 12 persons, respectively.
+* We have held out the test set of 40 persons.
+* Each person has been captured using 2 cameras from 8 different angles. That is, each person would have 16 images. All images of a unique person is stored in a single directory (numbered from 001 to 114).
+* The dataset has the following directory structure:
+
+* The images of a person in the val set in split into query and gallery images. The query is the set of images which will be used to retrieve the images of the same person from the gallery. 
+* Note that query and gallery are mutually exclusive sets.
+
+### TODO
+1. You need to write the code for a Person Re-ID model and train it. 
+2. Write the training script and save the model after training.
+3. Evaluate and analyze the results. 
+	* The quantitative evaluation script has been given to calculate CMC@rank-1, CMC@rank-5, and mAP scores. 
+	* You need to write code for any visualization.
+
