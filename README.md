@@ -1,11 +1,12 @@
+![Python](https://img.shields.io/badge/python-3.7-blue?style=flat-square&logo=python)
 # Person Re-Identification
 
 ## Results
 
-|  Model   | CMC@Rank-1 | CMC@Rank-5 | mAP  | Download |
-| :------: | :--------: | :--------: | :--: | :------: |
-| Baseline |    0.92    |    0.96    | 0.91 |  model   |
-|   Ours   |    0.93    |   0.964    | 0.95 |  Model   |
+|  Model   | CMC@Rank-1 | CMC@Rank-5 | mAP  |                           Download                           |
+| :------: | :--------: | :--------: | :--: | :----------------------------------------------------------: |
+| Baseline |    0.92    |    0.96    | 0.91 | [model](https://drive.google.com/file/d/1IxTAUOjS3_S4sF1mRJ72Mp5Xo-omQu6a/view?usp=sharing) |
+|   Ours   |    0.93    |   0.964    | 0.95 |                            Model                             |
 
 ## Installation
 
@@ -16,19 +17,6 @@ pip install -r requirements.txt
 ```
 
 `PennFudanPed_train.json`, and `PennFudanPed_val.json` contains COCO annotations for a randomly generated train-val split of the PennFudan dataset. 
-
-##### Download Penn-Fudan Dataset
-
-```
-wget https://www.cis.upenn.edu/~jshi/ped_html/PennFudanPed.zip
-unzip PennFudanPed.zip 
-```
-
-##### Download SVM model weights
-
-```bash
-gdown 1zfU44JxyHCUSWJ7ngiKyqJocgdF82pVt
-```
 
 ## Running Models
 
@@ -49,6 +37,15 @@ The script `run-test.py` takes in the query and gallery images and computes the 
 1. CMC@Rank-1
 2. CMC@Rank-5
 3. mean Average Precision (mAP)
+
+## Acknowledgements
+
+- Evaluation Metrics are adapted from [deep-person-reid](https://github.com/KaiyangZhou/deep-person-reid/blob/v1.0.6/torchreid/metrics/rank_cylib/rank_cy.pyx).
+- Re-Ranking is adapted from [person-re-ranking](https://github.com/zhunzhong07/person-re-ranking/blob/master/python-version/re_ranking_ranklist.py).
+- Random Grayscale Patch Replacement is adapted from [Data-Augmentation](https://github.com/finger-monkey/Data-Augmentation/blob/main/trans_gray.py).
+- Random Erasing is adapted from [Random-Erasing](https://github.com/zhunzhong07/Random-Erasing/blob/master/transforms.py).
+- Triplet Loss is adapted from [triplet-reid](https://github.com/VisualComputingInstitute/triplet-reid/blob/master/loss.py).
+
 
 ## Authors
 
