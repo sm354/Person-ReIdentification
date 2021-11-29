@@ -135,7 +135,8 @@ class LATransformer(nn.Module):
             out = torch.mul(L[:, i, :], self.lmbd)
             L[:,i,:] = torch.div(torch.add(cls_token_out.squeeze(),out), 1+self.lmbd)
             
-        L, _ = torch.max(L, dim=1)
+        # L, _ = torch.max(L, dim=1)
+        L = torch.mean(L, dim=1)
         
         # Locally aware network
         part = {}
