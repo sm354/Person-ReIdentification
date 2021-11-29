@@ -6,7 +6,7 @@
 |  Model   | CMC@Rank-1 | CMC@Rank-5 | mAP  |                           Download                           |
 | :------: | :--------: | :--------: | :--: | :----------------------------------------------------------: |
 | Baseline |    0.92    |    0.96    | 0.91 | [model](https://drive.google.com/file/d/1IxTAUOjS3_S4sF1mRJ72Mp5Xo-omQu6a/view?usp=sharing) |
-|   Ours   |    0.93    |   0.964    | 0.95 |                            Model                             |
+|   Ours   |    0.93    |   0.964    | 0.95 | [model](https://drive.google.com/file/d/1C5fkNlcLTduBjZ0YYSKQeeZWhXemCT9p/view?usp=sharing) |
 
 ## Installation
 
