@@ -5,10 +5,10 @@
 
 On validation set
 
-|  Model   | CMC@rank-1 | CMC@rank-5 | mAP  |                           Download                           |
-| :------: | :--------: | :--------: | :--: | :----------------------------------------------------------: |
-| Baseline |    92.9    |    96.4    | 91.5 | [model](https://drive.google.com/file/d/1IxTAUOjS3_S4sF1mRJ72Mp5Xo-omQu6a/view?usp=sharing) |
-|   Ours   |    92.9    |    1.0     | 93.2 | [model](https://drive.google.com/file/d/1C5fkNlcLTduBjZ0YYSKQeeZWhXemCT9p/view?usp=sharing) |
+|     Model      | CMC@rank-1 | CMC@rank-5 | mAP  |                           Download                           |
+| :------------: | :--------: | :--------: | :--: | :----------------------------------------------------------: |
+|    Baseline    |    92.9    |    96.4    | 91.5 | [model](https://drive.google.com/file/d/1IxTAUOjS3_S4sF1mRJ72Mp5Xo-omQu6a/view?usp=sharing) |
+| LA-TF++ (ours) |    92.9    |    1.0     | 93.2 | [model](https://drive.google.com/file/d/1C5fkNlcLTduBjZ0YYSKQeeZWhXemCT9p/view?usp=sharing) |
 
 ## Installation
 
@@ -18,13 +18,21 @@ pip install -r requirements.txt
 
 ## Running Models
 
-**Training** 
+### **Training** 
+
+**Locally-Aware Transformer (Baseline)**
 
 ```bash
-python run-train.py --train_data_dir ./data/train --model_name la-tf++ --model_dir ./model --num_epochs 30
+python train_baseline.py --train_data_dir ./data/train --model_name la-tf_baseline --model_dir ./model
 ```
 
-**Testing**
+**LA-TF++ (Our model)** 
+
+```bash
+python run-train.py --train_data_dir ./data/train --model_name la-tf++_final --model_dir ./model
+```
+
+### **Testing**
 
 ```bash
 python run-test.py --model_path <path-to-saved-model> --test_data ./data/val
@@ -35,6 +43,12 @@ The script `run-test.py` takes in the query and gallery images (present in the `
 1. CMC@rank-1
 2. CMC@rank-5
 3. mean Average Precision (mAP)
+
+#### Visualization
+
+```bash
+python run-test.py --model_path <path-to-saved-model> --test_data ./data/val --visualize --save_preds <path-to-save-images>
+```
 
 ## Dataset
 
