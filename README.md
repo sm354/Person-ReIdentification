@@ -1,13 +1,16 @@
 ![Python](https://img.shields.io/badge/python-3.7-blue?style=flat-square&logo=python)
 # Person Re-Identification
 
-## Results
+Person re-identification (Re-ID) is the task of identifying a person-of-interest (query person) at other time and/or location captured using same or different camera at same or different orientation. Re-ID is addressed as image-retrieval problem where we have a set of images of different person, called as gallery, and we retrieve the most similar person to the query person from the gallery. 
 
-On validation set
+In this work we implement Locally Aware Transformer ([LA-TF](https://arxiv.org/pdf/2106.03720.pdf)) on [PKU-Reid](https://arxiv.org/pdf/1605.02464v1.pdf) dataset, and make design changes to address its limitations. 
+
+
+## Results
 
 |     Model      | CMC@rank-1 | CMC@rank-5 | mAP  |                           Download                           |
 | :------------: | :--------: | :--------: | :--: | :----------------------------------------------------------: |
-|    Baseline    |    92.9    |    96.4    | 91.5 | [model](https://drive.google.com/file/d/1IxTAUOjS3_S4sF1mRJ72Mp5Xo-omQu6a/view?usp=sharing) |
+|    LA-TF    |    92.9    |    96.4    | 91.5 | [model](https://drive.google.com/file/d/1IxTAUOjS3_S4sF1mRJ72Mp5Xo-omQu6a/view?usp=sharing) |
 | LA-TF++ (ours) |    92.9    |    1.0     | 93.2 | [model](https://drive.google.com/file/d/1alTMrdiupa2McGkSOJCgO_QC4DCNhc0f/view?usp=sharing) |
 
 ## Installation
@@ -58,11 +61,5 @@ The dataset has 114 unique persons. The train and val set contain 62 and 12 pers
 
 - Locally Aware Transformer (LA-TF) is adaped from [Person Re-Identification with a Locally Aware Transformer](https://github.com/SiddhantKapil/LA-Transformer).
 - Triplet Loss and Label Smoothing are adapted from [Alignedreid++](https://github.com/michuanhaohao/AlignedReID).
-
-
-## Authors
-
-- [Shubham Mittal](https://www.linkedin.com/in/shubham-mittal-6a8644165/)
-- [Aditi Khandelwal](https://www.linkedin.com/in/aditi-khandelwal-991b1b19b/)
 
 Computer Vision course project ([course webpage](https://www.cse.iitd.ac.in/~chetan/teaching/col780-2020.html)) taken by [Prof. Chetan Arora](https://www.cse.iitd.ac.in/~chetan)
