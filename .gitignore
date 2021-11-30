@@ -3,7 +3,6 @@
 **/__pycache__
 *.ipynb_checkpoints
 *.zip
-*.pdf
 model
 report
 references
