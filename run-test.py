@@ -26,10 +26,10 @@ from metrics import *
 def parse_args():
     parser = argparse.ArgumentParser(description='Train Person ReID Model')
     parser.add_argument('--seed', default=42)
-    parser.add_argument('--model_path', type=str, default="./model/la-tf++.pth")
-    parser.add_argument('--test_data', type=str, default="/home/shubham/CVP/test")
+    parser.add_argument('--model_path', type=str, default="./model/la-tf++_final.pth")
+    parser.add_argument('--test_data', type=str, default="/home/shubham/CVP/data/val")
     parser.add_argument('--visualize', action='store_true')
-    parser.add_argument('--save_preds', type=str, default="/home/shubham/CVP/predictions")
+    parser.add_argument('--save_preds', type=str, default="/home/shubham/CVP/la-tf_baseline")
     args = parser.parse_args()
     return args
 
@@ -85,7 +85,7 @@ class visualization_params:
         transforms.Resize(size=(128,48))
         ])
 
-def visualize(query_img, gallery_imgs, gallery_idxs, save_path):
+def visualize(query_img, gallery_imgs, gallery_idxs, label, gallery_labels, save_path):
     plt.figure(figsize=(16.,6.))
     plt.subplot(1,11,1)
     img_tensor = query_img.clone()
@@ -93,7 +93,9 @@ def visualize(query_img, gallery_imgs, gallery_idxs, save_path):
         img_tensor[i] = (img_tensor[i] * visualization_params.std[i]) + visualization_params.mean[i]
     x = visualization_params.t(img_tensor)
     x = np.array(x)
-    plt.axis('off')
+    plt.xticks([])
+    plt.yticks([])
+    plt.title("Query")
     plt.imshow(x)
 
     for j in range(10):
@@ -103,7 +105,12 @@ def visualize(query_img, gallery_imgs, gallery_idxs, save_path):
         x = visualization_params.t(img_tensor)
         x = np.array(x)
         plt.subplot(1,11,j+2)
-        plt.axis('off')
+        if gallery_labels[j] == label:
+            plt.title("True")
+        else:
+            plt.title("False")
+        plt.xticks([])
+        plt.yticks([])
         plt.imshow(x)
         
     plt.savefig(save_path)
@@ -204,6 +211,7 @@ rank1_score = 0
 rank5_score = 0
 ap = 0
 count = 0
+print_one_correct = True
 for query, label in zip(concatenated_query_vectors, query_label):
     query_img = query_imgs[count]
     count += 1
@@ -217,15 +225,17 @@ for query, label in zip(concatenated_query_vectors, query_label):
     ap += calc_map(label, output)
     
     if args.visualize:
-        if r1:
-            # save_path = os.path.join(visualization_path, "correct")
-            # save_path = os.path.join(save_path, str(count-1)+".png")
-            # visualize(query_img, gallery_imgs, gallery_imgs_idxs, save_path)
-            pass
-        else:
+        if r1 and print_one_correct:
+            assert label == output[1][0][0]
+            save_path = os.path.join(args.save_preds, "correct")
+            save_path = os.path.join(save_path, str(count-1)+".png")
+            visualize(query_img, gallery_imgs, gallery_imgs_idxs, label, output[1][0], save_path)
+            print_one_correct = False
+        elif not r1:
+            assert label != output[1][0][0]
             save_path = os.path.join(args.save_preds, "incorrect")
             save_path = os.path.join(save_path, str(count-1)+".png")
-            visualize(query_img, gallery_imgs, gallery_imgs_idxs, save_path)
+            visualize(query_img, gallery_imgs, gallery_imgs_idxs, label, output[1][0], save_path)
 
 print("Correct: {}, Total: {}, Incorrect: {}".format(rank1_score, count, count-rank1_score))
 print("Rank1: %.3f, Rank5: %.3f, mAP: %.3f"%(rank1_score/len(query_feature), 
