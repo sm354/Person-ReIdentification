@@ -6,12 +6,12 @@ Person re-identification (Re-ID) is the task of identifying a person-of-interest
 In this work we implement Locally Aware Transformer ([LA-TF](https://arxiv.org/pdf/2106.03720.pdf)) on [PKU-Reid](https://arxiv.org/pdf/1605.02464v1.pdf) dataset, and make design changes to address its limitations. 
 
 
-## Results
+## Results (on test set)
 
 |     Model      | CMC@rank-1 | CMC@rank-5 | mAP  |                           Download                           |
 | :------------: | :--------: | :--------: | :--: | :----------------------------------------------------------: |
-|    LA-TF    |    92.9    |    96.4    | 91.5 | [model](https://drive.google.com/file/d/1IxTAUOjS3_S4sF1mRJ72Mp5Xo-omQu6a/view?usp=sharing) |
-| LA-TF++ (ours) |    92.9    |    1.0     | 93.2 | [model](https://drive.google.com/file/d/1alTMrdiupa2McGkSOJCgO_QC4DCNhc0f/view?usp=sharing) |
+|    LA-TF    |    95    |    99.4   | 91.1 | [model](https://drive.google.com/file/d/1IxTAUOjS3_S4sF1mRJ72Mp5Xo-omQu6a/view?usp=sharing) |
+| LA-TF++ (ours) |    98.8    |    1.0     | 94.7 | [model](https://drive.google.com/file/d/1alTMrdiupa2McGkSOJCgO_QC4DCNhc0f/view?usp=sharing) |
 
 ## Installation
 
