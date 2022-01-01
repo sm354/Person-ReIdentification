@@ -3,7 +3,7 @@
 
 Person re-identification (Re-ID) is the task of identifying a person-of-interest (query person) at other time and/or location captured using same or different camera at same or different orientation. Re-ID is addressed as image-retrieval problem where we have a set of images of different person, called as gallery, and we retrieve the most similar person to the query person from the gallery. 
 
-In this work we implement Locally Aware Transformer ([LA-TF](https://arxiv.org/pdf/2106.03720.pdf)) on [PKU-Reid](https://arxiv.org/pdf/1605.02464v1.pdf) dataset, and make design changes to address its limitations. 
+In this work we implement Locally Aware Transformer ([LA-TF](https://arxiv.org/pdf/2106.03720.pdf)) on [PKU-Reid](https://arxiv.org/pdf/1605.02464v1.pdf) dataset, and make design changes to address its limitations. Report is available [here](https://drive.google.com/file/d/1kYbeVxH33eQMVjXccgQ_tooVQy2dRZfo/view?usp=sharing). 
 
 
 ## Results (on test set)
